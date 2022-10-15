@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py data/raw/wachttijden.csv data/intermediate/wachttijden.csv
+    deps:
+    - path: data/raw/wachttijden.csv
+      md5: 8abeb82ae1daf2362d6946d046270ff0
+      size: 99016814
+    - path: src/prepare.py
+      md5: 79f86ded8a52006b17a6adf5ad031371
+      size: 784
+    outs:
+    - path: data/intermediate/wachttijden.csv
+      md5: 9a591fd86ecd2516a92b6fe497870e34
+      size: 15078746
