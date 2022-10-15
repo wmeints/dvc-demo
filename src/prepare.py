@@ -23,15 +23,15 @@ def fix_missing_values(df):
 
 
 @click.command()
-@click.argument('input_path', help='Path to the raw dataset')
-@click.argument('output_path', help='Path to the prepared dataset')
+@click.argument('input_path', type=str)
+@click.argument('output_path', type=str)
 def main(input_path, output_path):
-    df = pd.read_csv(input_path, encoding='iso8859-1', sep=';')
+    df = pd.read_csv(input_path, sep=';')
 
     df = select_features(df)
     df = fix_missing_values(df)
 
-    Path(output_path).mkdir(exist_ok=True)
+    Path(output_path).parent.mkdir(exist_ok=True)
     df.to_csv(output_path, index=None)
 
 

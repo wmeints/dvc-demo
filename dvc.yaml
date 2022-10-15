@@ -1,10 +1,8 @@
 stages:
   prepare:
-    cmd: python src/prepare.py data/raw/wachttijden.csv
+    cmd: python src/prepare.py data/raw/wachttijden.csv data/intermediate/wachttijden.csv
     deps:
     - data/raw/wachttijden.csv
     - src/prepare.py
-    params:
-    - prepare.split
     outs:
-    - data/prepared/wachttijden.csv
+    - data/intermediate/wachttijden.csv
