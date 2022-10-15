@@ -28,12 +28,7 @@ def get_model():
     return model_pipeline
 
 
-@click.command()
-@click.argument("input_path", type=str, default='data/intermediate/wachttijden.csv')
-@click.argument("output_path", type=str, default='models/classifier.bin')
-def main(input_path, output_path):
-    model_pipeline = get_model()
-
+def get_data(input_path):
     df = pd.read_csv(input_path)
     df_train, df_test = train_test_split(df, test_size=0.2)
 
@@ -43,13 +38,25 @@ def main(input_path, output_path):
     df_train_output = df_train['WACHTTIJD']
     df_test_output = df_test['WACHTTIJD']
 
+    return df_train_features, df_test_features, df_train_output, df_test_output
+
+
+@click.command()
+@click.argument("input_path", type=str, default='data/intermediate/wachttijden.csv')
+@click.argument("output_path", type=str, default='models/classifier.bin')
+def main(input_path, output_path):
+    model_pipeline = get_model()
+    
+    train_features, test_features, train_output, test_output = \
+        get_data(input_path)
+
     model_pipeline.fit(
-        df_train_features,
-        df_train_output
+        train_features,
+        train_output
     )
 
     score = model_pipeline.score(
-        df_test_features.to_numpy(), df_test_output.to_numpy())
+        test_features.to_numpy(), test_output.to_numpy())
 
     with open('metrics.json', 'w') as metrics_file:
         metrics_file.write(json.dumps({

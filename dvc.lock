@@ -20,12 +20,12 @@ stages:
       md5: 9a591fd86ecd2516a92b6fe497870e34
       size: 15078746
     - path: src/train.py
-      md5: ac2f5d29b11dd8b3dd413a01637393e5
-      size: 1602
+      md5: 513d5117a81d95e19cb695fa8370900e
+      size: 1797
     outs:
     - path: metrics.json
-      md5: 0195425599a38fb73ae02e59871d30f6
+      md5: 8581f8d75c409192aaa56955a28a8b59
       size: 27
     - path: models/classifier.bin
-      md5: 6102171e97207c001cfa5acb14e14a8d
-      size: 3091395
+      md5: a48ddad61ab93c0d11c01c7818f7bddd
+      size: 3091411
