@@ -6,3 +6,12 @@ stages:
     - src/prepare.py
     outs:
     - data/intermediate/wachttijden.csv
+  train:
+    cmd: python src/train.py data/intermediate/wachttijden.csv models/classifier.bin
+    deps:
+    - data/intermediate/wachttijden.csv
+    - src/train.py
+    metrics:
+    - metrics.json
+    outs:
+    - models/classifier.bin
