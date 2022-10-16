@@ -22,6 +22,7 @@ jobs:
 
           # Report metrics
           git fetch --prune
+          git config --global --add safe.directory /__w/dvc-demo/dvc-demo
           dvc metrics diff main --show-md >> report.md
 
           # Send report as a comment
