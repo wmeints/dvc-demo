@@ -8,7 +8,7 @@ jobs:
     name: Verify sources
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Checkout sources
       - uses: actions/setup-python@v2
         name: Configure Python
@@ -22,7 +22,7 @@ jobs:
     environment: dev
     needs: [verify_sources]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Checkout sources
       - uses: actions/setup-python@v2
         name: Configure Python
