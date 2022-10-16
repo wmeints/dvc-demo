@@ -4,15 +4,32 @@ on:
     branches:
       - main
 jobs:
+  verify_sources:
+    name: Verify sources
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout sources
+      - uses: actions/setup-python@v2
+        name: Configure Python
+      - name: Lint sources
+        run: |
+          pip install bandit
+          bandit -r src/
   train_model:
+    name: Train model
     runs-on: ubuntu-latest
     environment: dev
     steps:
       - uses: actions/checkout@v2
+        name: Checkout sources
       - uses: actions/setup-python@v2
+        name: Configure Python
       - uses: iterative/setup-cml@v1
+        name: Configure CML Tooling
       - uses: iterative/setup-dvc@v1
-      - name: Train model
+        name: Configure DVC Tooling
+      - name: Run training script
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
