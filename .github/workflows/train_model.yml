@@ -4,8 +4,9 @@ on:
     branches:
       - main
 jobs:
-  run:
+  train_model:
     runs-on: ubuntu-latest
+    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     environment: dev
     steps:
       - uses: actions/checkout@v2
