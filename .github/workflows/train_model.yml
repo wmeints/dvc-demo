@@ -29,4 +29,4 @@ jobs:
           dvc metrics diff main --show-md >> report.md
 
           # Send report as a comment
-          cml comment create --publish report.md
+          cml send-github-check report.md 
