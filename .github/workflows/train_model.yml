@@ -20,6 +20,7 @@ jobs:
     name: Train model
     runs-on: ubuntu-latest
     environment: dev
+    needs: [verify_sources]
     steps:
       - uses: actions/checkout@v2
         name: Checkout sources
