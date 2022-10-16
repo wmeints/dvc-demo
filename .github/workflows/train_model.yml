@@ -6,25 +6,27 @@ on:
 jobs:
   train_model:
     runs-on: ubuntu-latest
-    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     environment: dev
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - uses: iterative/setup-dvc@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
         run: |
+          # Install the python requirements
           pip install -r requirements.txt
-          dvc pull --run-cache
+
+          # Pull the data and reproduce the experiment
+          dvc pull
           dvc repro
 
           # Report metrics
-          git fetch --prune
-          git config --global --add safe.directory /__w/dvc-demo/dvc-demo
+          git fetch --prune --unshallow
           dvc metrics diff main --show-md >> report.md
 
           # Send report as a comment
-          cml send-comment report.md
-
+          cml comment create --pr --publish report.md
