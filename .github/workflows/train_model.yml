@@ -21,6 +21,7 @@ jobs:
           dvc repro
 
           # Report metrics
+          git fetch --prune
           dvc metrics diff main --show-md >> report.md
 
           # Send report as a comment
