@@ -27,7 +27,13 @@ jobs:
         name: Configure Python
       - name: Run tests 
         run: |
+          # Install runtime requirements
+          pip install -r requirements.txt
+
+          # Install test requirements
           pip install pytest
+
+          # Run unit-tests
           python -m pytest
   train_model:
     name: Train model
