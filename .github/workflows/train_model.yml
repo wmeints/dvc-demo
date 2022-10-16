@@ -1,0 +1,28 @@
+name: train_model
+on:
+  push:
+    branches:
+      - main
+jobs:
+  run:
+    runs-on: ubuntu
+    environment: dev
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+        run: |
+          pip install -r requirements.txt
+          dvc pull --run-cache
+          dvc repro
+
+          # Report metrics
+          dvc metrics diff main --show-med >> report.md
+
+          # Send report as a comment
+          cml send-comment report.md
+

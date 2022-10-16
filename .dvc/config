@@ -1,3 +1,4 @@
+[core]
+    remote = origin
 ['remote "origin"']
     url = azure://projects/dvc-demo
-    account_name = stormlopsdemo
