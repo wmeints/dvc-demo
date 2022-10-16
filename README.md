@@ -10,5 +10,5 @@ Please follow the instructions below to get started.
 
 ## Getting started
 
-TODO: Figure out how to store the file publicly so people can import it into their project.
+TODO: Figure out how to store the file publicly so people can import it into their project.  
 TODO: Write comprehensive setup guide.
