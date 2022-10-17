@@ -24,11 +24,11 @@ stages:
       size: 1730
     outs:
     - path: .mlem/model/classifier
-      md5: daea962d96de7842390b63bcb457e7ef
-      size: 11117956
+      md5: d462d86fd724892d62d068efba14dd82
+      size: 11106308
     - path: .mlem/model/classifier.mlem
-      md5: 50373c16a824eec1a1ef2f0df1033fd3
+      md5: 00e9a4169697b96cfa651a1a4521aa97
       size: 1319
     - path: metrics.json
-      md5: 33736d7f165c2a268683ffeb2261af2e
-      size: 25
+      md5: a1dc348e3316785439b75e1eb5f138bd
+      size: 26

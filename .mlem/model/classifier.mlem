@@ -1,7 +1,7 @@
 artifacts:
   data:
-    hash: daea962d96de7842390b63bcb457e7ef
-    size: 11117956
+    hash: d462d86fd724892d62d068efba14dd82
+    size: 11106308
     uri: classifier
 model_type:
   methods:
