@@ -4,7 +4,7 @@ import json
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.model_selection import train_test_split
-from interpret.glassbox import ExplainableBoostingRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 import joblib
 
 
@@ -22,7 +22,7 @@ def get_model():
 
     model_pipeline = Pipeline([
         ("combine_features", FeatureUnion(encoders)),
-        ("estimator", ExplainableBoostingRegressor())
+        ("estimator", GradientBoostingRegressor())
     ])
 
     return model_pipeline
