@@ -4,8 +4,8 @@ import json
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import GradientBoostingRegressor
-import joblib
+from sklearn.ensemble import RandomForestRegressor 
+from mlem.api import save
 
 
 FEATURE_NAMES = [
@@ -22,7 +22,7 @@ def get_model():
 
     model_pipeline = Pipeline([
         ("combine_features", FeatureUnion(encoders)),
-        ("estimator", GradientBoostingRegressor())
+        ("estimator", RandomForestRegressor())
     ])
 
     return model_pipeline
@@ -43,8 +43,7 @@ def get_data(input_path):
 
 @click.command()
 @click.argument("input_path", type=str, default='data/intermediate/wachttijden.csv')
-@click.argument("output_path", type=str, default='models/classifier.bin')
-def main(input_path, output_path):
+def main(input_path):
     model_pipeline = get_model()
     
     train_features, test_features, train_output, test_output = \
@@ -63,8 +62,7 @@ def main(input_path, output_path):
             'r2': score
         }))
 
-    joblib.dump(model_pipeline, output_path)
-
+    save(model_pipeline, 'classifier', sample_data=test_features)   
 
 if __name__ == "__main__":
     main()

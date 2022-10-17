@@ -1,0 +1,69 @@
+artifacts:
+  data:
+    hash: daea962d96de7842390b63bcb457e7ef
+    size: 11117956
+    uri: classifier
+model_type:
+  methods:
+    predict:
+      args:
+      - name: data
+        type_:
+          columns:
+          - ''
+          - TYPE_WACHTTIJD
+          - SPECIALISME
+          - ROAZ_REGIO
+          - TYPE_ZORGINSTELLING
+          dtypes:
+          - int64
+          - object
+          - object
+          - object
+          - object
+          index_cols:
+          - ''
+          type: dataframe
+      name: predict
+      returns:
+        dtype: float64
+        shape:
+        - null
+        type: ndarray
+    sklearn_predict:
+      args:
+      - name: X
+        type_:
+          columns:
+          - ''
+          - TYPE_WACHTTIJD
+          - SPECIALISME
+          - ROAZ_REGIO
+          - TYPE_ZORGINSTELLING
+          dtypes:
+          - int64
+          - object
+          - object
+          - object
+          - object
+          index_cols:
+          - ''
+          type: dataframe
+      name: predict
+      returns:
+        dtype: float64
+        shape:
+        - null
+        type: ndarray
+      varkw: predict_params
+  type: sklearn_pipeline
+object_type: model
+requirements:
+- module: numpy
+  version: 1.23.4
+- module: pandas
+  version: 1.3.4
+- module: sklearn
+  version: 1.1.2
+- module: scipy
+  version: 1.9.2

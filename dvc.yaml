@@ -7,11 +7,13 @@ stages:
     outs:
     - data/intermediate/wachttijden.csv
   train:
-    cmd: python src/train.py data/intermediate/wachttijden.csv models/classifier.bin
+    cmd: python src/train.py data/intermediate/wachttijden.csv
     deps:
     - data/intermediate/wachttijden.csv
     - src/train.py
     metrics:
     - metrics.json
     outs:
-    - models/classifier.bin
+    - .mlem/model/classifier
+    - .mlem/model/classifier.mlem:
+        cache: false

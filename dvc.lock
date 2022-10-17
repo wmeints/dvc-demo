@@ -14,18 +14,21 @@ stages:
       md5: 9a591fd86ecd2516a92b6fe497870e34
       size: 15078746
   train:
-    cmd: python src/train.py data/intermediate/wachttijden.csv models/classifier.bin
+    cmd: python src/train.py data/intermediate/wachttijden.csv
     deps:
     - path: data/intermediate/wachttijden.csv
       md5: 9a591fd86ecd2516a92b6fe497870e34
       size: 15078746
     - path: src/train.py
-      md5: 513d5117a81d95e19cb695fa8370900e
-      size: 1797
+      md5: 296d44adba0fce572e7e86a19f274f61
+      size: 1730
     outs:
+    - path: .mlem/model/classifier
+      md5: daea962d96de7842390b63bcb457e7ef
+      size: 11117956
+    - path: .mlem/model/classifier.mlem
+      md5: 50373c16a824eec1a1ef2f0df1033fd3
+      size: 1319
     - path: metrics.json
-      md5: 8581f8d75c409192aaa56955a28a8b59
-      size: 27
-    - path: models/classifier.bin
-      md5: a48ddad61ab93c0d11c01c7818f7bddd
-      size: 3091411
+      md5: 33736d7f165c2a268683ffeb2261af2e
+      size: 25
